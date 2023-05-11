@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import celilcavus.JavaAndroid.phoneDirectory.MainActivity;
 import celilcavus.JavaAndroid.phoneDirectory.Model.PhoneNumbers;
 import celilcavus.JavaAndroid.phoneDirectory.PersonDetails;
+import celilcavus.JavaAndroid.phoneDirectory.R;
 import celilcavus.JavaAndroid.phoneDirectory.databinding.RecylerViewRowBinding;
 
 public class ContextListAdapter extends RecyclerView.Adapter<ContextListAdapter.ViewHolderAdapter> {
@@ -43,6 +44,7 @@ public class ContextListAdapter extends RecyclerView.Adapter<ContextListAdapter.
             holder.binding.txtName.setText(numbersArrayList.get(position).getName() + " "
                     .concat(numbersArrayList.get(position).getLastName()));
             holder.binding.txtNumber.setText(numbersArrayList.get(position).getPhoneNumber());
+            holder.binding.imageView.setImageResource(R.drawable.img1);
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

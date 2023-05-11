@@ -3,6 +3,7 @@ package celilcavus.JavaAndroid.phoneDirectory;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -36,11 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClickAddNumber(View view) {
         try {
-            PhoneNumbers phoneNumbers = new PhoneNumbers();
-            phoneNumbers.Name = "Ahmet";
-            phoneNumbers.LastName = "Yıldız";
-            phoneNumbers.PhoneNumber = "949324234";
-            dbContext.Add(phoneNumbers);
+            startActivity(new Intent(MainActivity.this, PersonelAddActivity.class));
         }catch (Exception ex)
         {
             System.out.println("ex1 = " + ex);

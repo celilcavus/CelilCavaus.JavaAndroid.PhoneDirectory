@@ -4,6 +4,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.database.sqlite.SQLiteStatement;
 
 import java.sql.PreparedStatement;
 import java.util.ArrayList;
@@ -60,7 +61,13 @@ public class DatabaseContext {
                     phoneNumbers.LastName,
                     phoneNumbers.PhoneNumber);
              */
-            database.execSQL("INSERT INTO phoneNumbers (Name,LastName,PhoneNumber) values ('Ahmet','akyildiz','31231321')");
+            String sql = "INSERT INTO phoneNumbers (Name,LastName,PhoneNumber) values (?,?,?)";
+            SQLiteStatement st = database.compileStatement(sql);
+            st.bindString(1,phoneNumbers.Name);
+            st.bindString(2,phoneNumbers.LastName);
+            st.bindString(3,phoneNumbers.PhoneNumber);
+            st.execute();
+
         } catch (Exception ex) {
             System.out.println("ex = " + ex);
         }
@@ -68,6 +75,19 @@ public class DatabaseContext {
     }
 
     public void Update(PhoneNumbers phoneNumbers) {
+        try{
+            String UpdateQuery = "UPDATE  phoneNumbers SET Name = ?, LastName = ?,PhoneNumber = ? where ID = ?";
+            SQLiteStatement sqLiteStatement = database.compileStatement(UpdateQuery);
+            sqLiteStatement.bindString(1,phoneNumbers.Name);
+            sqLiteStatement.bindString(2,phoneNumbers.LastName);
+            sqLiteStatement.bindString(3,phoneNumbers.PhoneNumber);
+            sqLiteStatement.bindLong(4,phoneNumbers.Id);
+            sqLiteStatement.execute();
+        }
+        catch (Exception ex)
+        {
+            System.out.println("Database Context Update Method Ex = " + ex);
+        }
 
     }
 
@@ -79,9 +99,5 @@ public class DatabaseContext {
         {
             System.out.println("Database Context Delete Method Ex " + ex);
         }
-    }
-
-    public void GetById(int id) {
-
     }
 }

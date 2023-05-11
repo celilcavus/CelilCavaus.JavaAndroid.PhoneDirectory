@@ -3,12 +3,21 @@ package celilcavus.JavaAndroid.phoneDirectory.Model;
 import java.io.Serializable;
 
 public class PhoneNumbers implements Serializable {
+
+
     public int Id;
     public String Name;
     public String LastName;
 
     public  String PhoneNumber;
 
+    public int getId() {
+        return Id;
+    }
+
+    public void setId(int id) {
+        Id = id;
+    }
     public String getName() {
         return Name;
     }

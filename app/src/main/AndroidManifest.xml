@@ -13,6 +13,12 @@
         android:theme="@style/Theme.CelilcavusJavaAndroidphoneDirectory"
         tools:targetApi="31">
         <activity
+            android:name=".PersonelAddActivity"
+            android:exported="false" />
+        <activity
+            android:name=".UpdateActivity"
+            android:exported="false" />
+        <activity
             android:name=".PersonDetails"
             android:exported="false" />
         <activity

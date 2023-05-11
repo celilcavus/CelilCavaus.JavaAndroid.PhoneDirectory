@@ -41,5 +41,12 @@ public class PersonDetails extends AppCompatActivity {
     {
         DatabaseContext databaseContext = new DatabaseContext(getApplicationContext());
         databaseContext.Delete(person.Id);
+        startActivity(new Intent(PersonDetails.this, MainActivity.class));
+    }
+    public void onClickUpdate(View view)
+    {
+        Intent intent = new Intent(PersonDetails.this, UpdateActivity.class);
+        intent.putExtra("updatePersonel",person);
+        startActivity(intent);
     }
 }
